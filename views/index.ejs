@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webová anketa</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <style>
+    </style>
+</head>
+<body>
+    <h2>Formulář</h2>
+    <form action="/submit" method="post" class="form-container" id="anketaForm"> 
+        <div>
+            <label for="favGame" class="bold">Jméno:</label>
+            <input type="text" id="jmeno" name="jmeno" required> 
+        </div>
+        <div>
+            <label for="favGame" class="bold">Příjmení:</label>
+            <input type="text" id="prijmeni" name="prijmeni" required> 
+        </div>
+        <div>
+            <label for="favGame" class="bold">Povolání:</label>
+            <input type="text" id="povolani" name="povolani" required> 
+        </div>
+        <div>
+            <label for="favGame" class="bold">Telefon:</label>
+            <input type="text" id="telefon" name="telefon" required> 
+        </div>
+        <div>
+            <label for="favGame" class="bold">Email:</label>
+            <input type="text" id="email" name="email" required> 
+        </div>
+        <button type="submit" class="submit-btn">Odeslat odpovědi</button>
+    </form>
+
+    <script>
+        // JavaScript pro validaci formuláře
+        document.getElementById('anketaForm').addEventListener('submit', function(event) { // Při odeslání formuláře
+            const inputs = document.querySelectorAll('input, select'); // Vybrat všechna vstupní pole a rozbalovací seznamy
+            let isValid = true; // Předpokládejte, že formulář je platný
+
+            inputs.forEach(function(input) { // Pro každý prvek
+                if (!input.value) { // Pokud hodnota není vyplněna
+                    isValid = false; // Nastavit, že formulář není platný
+                    input.classList.add('invalid'); // Přidat třídu pro zvýraznění neplatného pole
+                } else { // Jinak
+                    input.classList.remove('invalid'); // Odstranit třídu pro zvýraznění neplatného pole
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

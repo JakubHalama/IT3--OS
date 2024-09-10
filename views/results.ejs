@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výsledky ankety</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+<h2>Výsledky formuláře:
+    <div class="container">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Datum</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Povolání</th>
+                <th>Telefon</th>
+                <th>Email</th>
+            </tr>
+            <% responses.forEach(function(response) { 
+                const date = new Date(response.timestamp);
+                const dateString = `${('0' + date.getDate()).slice(-2)}.${('0' + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()}`;
+                const timeString = `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}:${('0' + date.getSeconds()).slice(-2)}`;
+            %>
+                <tr>
+                    <td><%= response.id %></td>
+                    <td><%= dateString %></td>
+                    <td><%= response.answers.jmeno %></td>
+                    <td><%= response.answers.prijmeni %></td>
+                    <td><%= response.answers.povolani %></td>
+                    <td><%= response.answers.telefon %></td>
+                    <td><%= response.answers.email %></td>
+                </tr>
+            <% }); %>
+        </table>
+    </div>
+</body>
+</html>
+
